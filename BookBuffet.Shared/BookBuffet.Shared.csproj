@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB401552-4C3C-4504-8B79-42A68675865C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BookBuffet.Shared</RootNamespace>
+    <AssemblyName>BookBuffet.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Functional\BusinessDomainComponents\ICommentBDC.cs" />
+    <Compile Include="Functional\BusinessDomainComponents\IEventBDC.cs" />
+    <Compile Include="Functional\BusinessDomainComponents\IRoleBDC.cs" />
+    <Compile Include="Functional\BusinessDomainComponents\IUserBDC.cs" />
+    <Compile Include="Functional\BusinessFacades\ICommentFacade.cs" />
+    <Compile Include="Functional\BusinessFacades\IEventFacade.cs" />
+    <Compile Include="Functional\BusinessFacades\IRoleFacade.cs" />
+    <Compile Include="Functional\BusinessFacades\IUserFacade.cs" />
+    <Compile Include="Functional\DataAccessComponents\ICommentDAC.cs" />
+    <Compile Include="Functional\DataAccessComponents\IEventDAC.cs" />
+    <Compile Include="Functional\DataAccessComponents\IRoleDAC.cs" />
+    <Compile Include="Functional\DataAccessComponents\IUserDAC.cs" />
+    <Compile Include="Functional\DataTransferObjects\CommentDTO.cs" />
+    <Compile Include="Functional\DataTransferObjects\EventDTO.cs" />
+    <Compile Include="Functional\DataTransferObjects\FutureEventDTO.cs" />
+    <Compile Include="Functional\DataTransferObjects\LoginDTO.cs" />
+    <Compile Include="Functional\DataTransferObjects\PastEventDTO.cs" />
+    <Compile Include="Functional\DataTransferObjects\RegistrationDTO.cs" />
+    <Compile Include="Functional\DataTransferObjects\UserDTO.cs" />
+    <Compile Include="Infrastructure\Business\BusinessLayerBase.cs" />
+    <Compile Include="Infrastructure\Business\BusinessLayerFactory.cs" />
+    <Compile Include="Infrastructure\Business\IBusinessLayerFactory.cs" />
+    <Compile Include="Infrastructure\Business\IBusinessLogic.cs" />
+    <Compile Include="Infrastructure\Common\CommonAttributes\DisplayTextKeyAttribute.cs" />
+    <Compile Include="Infrastructure\Common\CommonAttributes\EntityPropertyMappingAttribute.cs" />
+    <Compile Include="Infrastructure\Common\CommonAttributes\QualifiedTypeNameAttribute.cs" />
+    <Compile Include="Infrastructure\Common\Constants\AppConstants.cs" />
+    <Compile Include="Infrastructure\Common\Constants\SuppressMessageConstants.cs" />
+    <Compile Include="Infrastructure\Common\EntityModel\CustomAttributes\EntityMappingAttribute.cs" />
+    <Compile Include="Infrastructure\Common\EntityModel\Enums\MappingDirectionType.cs" />
+    <Compile Include="Infrastructure\Common\EntityModel\Enums\MappingType.cs" />
+    <Compile Include="Infrastructure\Common\Enums\BusinessFacadeType .cs" />
+    <Compile Include="Infrastructure\Common\Enums\BusinessLayerType.cs" />
+    <Compile Include="Infrastructure\Common\Enums\DataAccessType.cs" />
+    <Compile Include="Infrastructure\Common\Enums\ObjectStateType.cs" />
+    <Compile Include="Infrastructure\Common\ExceptionHandling\Base\ExceptionBase.cs" />
+    <Compile Include="Infrastructure\Common\ExceptionHandling\CustomExceptionHandling\AttributeNotDefinedException.cs" />
+    <Compile Include="Infrastructure\Common\ExceptionHandling\CustomExceptionHandling\BDCException.cs" />
+    <Compile Include="Infrastructure\Common\ExceptionHandling\CustomExceptionHandling\DACException.cs" />
+    <Compile Include="Infrastructure\Common\ExceptionHandling\CustomExceptionHandling\FactoryException.cs" />
+    <Compile Include="Infrastructure\Common\ExceptionHandling\CustomExceptionHandling\NotificationException.cs" />
+    <Compile Include="Infrastructure\Common\ExceptionHandling\ExceptionManager.cs" />
+    <Compile Include="Infrastructure\Common\Factory\FactoryBase.cs" />
+    <Compile Include="Infrastructure\Common\OperationResult\OperationResult.cs" />
+    <Compile Include="Infrastructure\Common\OperationResult\OperationResultType.cs" />
+    <Compile Include="Infrastructure\Common\Utilities\EnumAttributeUtility.cs" />
+    <Compile Include="Infrastructure\Common\Utilities\ResourceUtility.cs" />
+    <Compile Include="Infrastructure\Common\Utilities\ValidatorUtility.cs" />
+    <Compile Include="Infrastructure\Common\Validations\EventDateValidation.cs" />
+    <Compile Include="Infrastructure\Common\Validations\NagarroSampleValidationFailure.cs" />
+    <Compile Include="Infrastructure\Common\Validations\NagarroSampleValidationResult.cs" />
+    <Compile Include="Infrastructure\DAC\DACBase.cs" />
+    <Compile Include="Infrastructure\DAC\DataAccessFactory.cs" />
+    <Compile Include="Infrastructure\DAC\IDataAccess.cs" />
+    <Compile Include="Infrastructure\DAC\IDataAccessFactory.cs" />
+    <Compile Include="Infrastructure\Facades\BusinessFacadeFactory.cs" />
+    <Compile Include="Infrastructure\Facades\FacadeBase.cs" />
+    <Compile Include="Infrastructure\Facades\IBusinessFacade.cs" />
+    <Compile Include="Infrastructure\Facades\IBusinessFacadeFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\DTO\CustomAttributes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)OutputBin\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

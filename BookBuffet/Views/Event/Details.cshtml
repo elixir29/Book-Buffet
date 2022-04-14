@@ -1,0 +1,96 @@
+﻿@model BookBuffet.Shared.EventDTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <hr />
+    <table>
+        <tr>
+            <th style="width:150px;"></th>
+
+        </tr>
+
+        <tr>
+            <td><strong>Title</strong></td>
+            <td>@Html.DisplayFor(model => model.EventTitle)</td>
+        </tr>
+
+        <tr>
+            <td><strong>Date</strong></td>
+            <td>@Html.DisplayFor(model => model.EventDate)</td>
+        </tr>
+
+        <tr>
+            <td><strong>Location</strong></td>
+            <td>@Html.DisplayFor(model => model.EventLocation)</td>
+        </tr>
+
+        <tr>
+            <td><strong>Time</strong></td>
+            <td>@Html.DisplayFor(model => model.EventTime)</td>
+        </tr>
+
+        <tr>
+            <td><strong>Type</strong></td>
+            <td>@Html.DisplayFor(model => model.EventType)</td>
+        </tr>
+
+        <tr>
+            <td><strong>Duration</strong></td>
+            <td>@Html.DisplayFor(model => model.EventDuration)</td>
+        </tr>
+
+        <tr>
+            <td><strong>Description</strong></td>
+            <td>@Html.DisplayFor(model => model.EventDescription)</td>
+        </tr>
+
+        @{if (Model.EventDetails != null)
+            {
+                <tr>
+                    <td><strong>Details</strong></td>
+                    <td>@Html.DisplayFor(model => model.EventDetails)</td>
+                </tr>
+            }
+        }
+
+
+        <tr>
+            <td><strong>Total invitee</strong></td>
+            <td>
+                @{
+                    int count = 0;
+                    if (Model.EventInvite != null)
+                    {
+                        string[] a = Model.EventInvite.Split(',');
+                        count = a.Length;
+                    }
+                }
+                @count
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</p>
+
+<hr />
+<hr />
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        Html.RenderAction("Create", "Comment");
+        Html.RenderAction("Show", "Comment");
+    }
+    else
+    {
+        <h4>Comments...</h4>
+        Html.RenderAction("Show", "Comment");
+    }
+}

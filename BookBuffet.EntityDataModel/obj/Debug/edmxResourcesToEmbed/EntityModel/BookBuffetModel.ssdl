@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookBuffetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="CommentText" Type="nvarchar(max)" />
+    <Property Name="CommentDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EventLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EventTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="EventDate" Type="date" Nullable="false" />
+    <Property Name="EventDuration" Type="int" Nullable="false" />
+    <Property Name="EventType" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="EventDescription" Type="nvarchar(max)" />
+    <Property Name="EventDetails" Type="nvarchar(max)" />
+    <Property Name="EventInvite" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserEmailId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserPassword" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Comment__EventId__3F466844">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__UserId__3E52440B">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Event__UserId__403A8C7D">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Role__UserId__412EB0B6">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="uspAddEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventTitle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EventLocation" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EventTime" Type="time" Mode="In" />
+    <Parameter Name="EventDate" Type="date" Mode="In" />
+    <Parameter Name="EventDuration" Type="int" Mode="In" />
+    <Parameter Name="EventType" Type="nvarchar" Mode="In" />
+    <Parameter Name="EventDescription" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EventDetails" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="EventInvite" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="UserId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="BookBuffetModelStoreContainer">
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Comment__EventId__3F466844" Association="Self.FK__Comment__EventId__3F466844">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__UserId__3E52440B" Association="Self.FK__Comment__UserId__3E52440B">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Event__UserId__403A8C7D" Association="Self.FK__Event__UserId__403A8C7D">
+      <End Role="User" EntitySet="User" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Role__UserId__412EB0B6" Association="Self.FK__Role__UserId__412EB0B6">
+      <End Role="User" EntitySet="User" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

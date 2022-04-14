@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BookBuffet.Shared.EventDTO>
+
+@{
+    ViewBag.Title = "EditIndex";
+}
+
+<h2>Edit</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<br />
+<br />
+@if (Model == null)
+{
+    <h3>No data !!!</h3>
+}
+else
+{
+    <table class="table">
+        <tr style="background-color:lightgray">
+            <th>
+                @Html.DisplayNameFor(model => model.EventTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDuration)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDuration)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EventId })
+                    @Html.ActionLink("Details", "Details", new { id = item.EventId })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
